@@ -189,3 +189,25 @@ print("Desviación estándar:", np.std(scores))
 Promedio F1: 0.1886185514736362
 Desviación estándar: 0.2016104178524424
 
+Como los valores tanto de F1 Score como de desviación estándar no están dando los resultados esperados, se incluye esta sección de código donde se comprueba cual es la intensidad promedio del tumor y la desviación estandar para elegir el umbral optimo.
+```python
+valores_tumor = []
+
+for i in range(len(image_paths)):
+    imagen = cv2.imread(image_paths[i])
+    mask = cv2.imread(mask_paths[i], 0)
+
+    gray = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
+    mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))
+
+    tumor_pixels = gray[mask == 255]
+    valores_tumor.extend(tumor_pixels)
+
+print("Media intensidad tumor:", np.mean(valores_tumor))
+print("Desviación:", np.std(valores_tumor))
+```
+Media intensidad tumor: 53.95745975739419
+Desviación: 42.95237497623277
+
+Analizando estos valores se puede concluir que el umbral optimo para segmentar el tumor debe ser de alrededor 53.95, sin embargo, la desviación estándar es demasiado alta, lo cual significa que están muy dispersos los datos. Hay tumores con intensidades muy altas, y otros con muy bajas. Por eso aunque se aplique el umbral optimo, los resultados no serán ideales pues los datos estas muy dispersos con respecto a la media.
+
