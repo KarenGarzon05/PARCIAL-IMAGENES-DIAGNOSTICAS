@@ -311,3 +311,11 @@ Finalmente, se aplica una regla de decisión: si el porcentaje de área tumoral 
 
 [Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
 [Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
+
+**Conclusiones**
+
+El presente análisis evaluó la segmentación de lesiones en imágenes de ultrasonido mediante un método de umbralización global para posteriormente cuantificar su desempeño utilizando la métrica F1-score. Los resultados evidencian una alta variabilidad entre imágenes, con valores que oscilan desde 0 hasta aproximadamente 0.59, lo que indica un comportamiento inconsistente del método frente a diferentes condiciones de contraste y calidad de imagen.
+
+Se observó que el uso de un umbral fijo no resulta robusto en imágenes de este estilo, debido mayormente a el ruido característico de las imágenes, la variabilidad en el contraste entre lesión y tejido circundante. En los casos con F1-score superiores a 0.50, la segmentación logró una adecuada correspondencia espacial con la máscara de referencia, sin embargo, también se evidencio en múltiples imágenes el desempeño fue deficiente o nulo, evidenciando altas tasas de falsos positivos o falsos negativos.
+En conclusión, la umbralización global funciona como técnica preliminar de segmentación, pero no es adecuada como método definitivo en imágenes de ultrasonido destacando las limitaciones este método frente a esta clase de imágenes médicas.
+
