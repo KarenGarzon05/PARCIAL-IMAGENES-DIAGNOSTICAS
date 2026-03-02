@@ -242,70 +242,8 @@ Este código realiza una clasificación simple de imágenes médicas basada en s
 El programa solicita al usuario la ruta de la imagen `(input)` y la carga con `cv2.imread`. Posteriormente, la imagen se convierte a escala de grises usando `cv2.cvtColor`, lo que facilita el análisis de intensidades.
 Después, se crea una imagen binaria donde los píxeles con intensidad menor que el umbral `(gray < T)` se consideran parte de la lesión. Con esta segmentación, se calcula el área tumoral sumando los píxeles blancos `(np.sum(binary))` y se obtiene el porcentaje respecto al área total de la imagen.
 Finalmente, se aplica una regla de decisión: si el porcentaje de área tumoral es mayor al 25%, la imagen se clasifica como maligna; en caso contrario, se clasifica como benigna.
-
-[Tabla F1 - Hoja 1.csv](https://github.com/user-attachments/files/25672929/Tabla.F1.-.Hoja.1.csv),,,
-,,,
-,Imagen ID,F1 Score,Observaciones
-,1,"0,02","Segmentación casi nula, el umbral no logra diferenciar el tumor del tejido circundante."
-,2,"0,51","Segmentacióndecon resultado medio donde se logra identifica la región tumoral principal, aunque se evidencian errores en la delimitación de bordes. "
-,3,"0,55",Buena segmentación con la que es posible identificar adecuadamente la región tumora casi sin defectos es decir con una baja tasa de falsos positivos y falsos negativos
-,4,"0,04",
-,5,"0,42",
-,6,"0,04",
-,7,"0,04",
-,8,"0,04",
-,9,"0,02","Fallo en la segmentación donde no existe solapamiento significativo con la máscara real, esto pudo ser causado por la contaminación visual de la muestra donde hay varios segmentos claros que el programa identifica dando falsos positivos "
-,10,"0,16",
-,11,"0,11",
-,12,"0,23",
-,13,"0,26",
-,14,"0,15",
-,15,"0,47",
-,16,"0,13",
-,17,"0,32",
-,18,"0,11",
-,19,"0,05",
-,20,"0,02",Segmentación no exitosa ya que el umbral no logra diferenciar el tumor del tejido circundante lo que da como resultado un F1 bajo
-,21,"0,24",
-,22,"0,19",
-,23,"0,07",
-,24,0,"Segmentación muy pobre, que no ofrece información gran cantidad de falsos positivos y falsos negativos"
-,25,"0,05",
-,26,"0,02",El umbral usado no logra diferenciar el tumor del tejido circundante.
-,27,"0,07",
-,28,"0,03",Segmentación altamente fragmentada y sin coherencia estructural humana con el ruido característico del ultrasonido domina el resultado binario
-,29,0,No se observa ningún tipo de coincidencia con la máscara patrón esto nos indica que el criterio de umbral resulta completamente inadecuado para esta imagen.
-,30,"0,29",
-,31,"0,54","Se logra identificar la forma general de la masa, aunque con ligera subsegmentación en los márgenes y vemos la región central presenta buena correspondencia."
-,32,"0,08",
-,33,"0,04",
-,34,"0,13",
-,35,"0,21",
-,36,"0,06",
-,37,"0,41",
-,38,"0,12",
-,39,"0,09",
-,40,"0,38",
-,41,"0,37",
-,42,"0,24",
-,43,0,No logra detectar la lesión al clasificar erróneamente el fondo como región de interés.
-,44,"0,58",Existe correspondencia aceptable con la máscara sin embatgo los bordes presentan pequeñas irregularidades.
-,45,"0,28",
-,46,"0,57","Buena segmentación con una clara delimitación del contorno del tumor, se evidencia correctamente la coherencia morfologica"
-,47,"0,28",
-,48,"0,59","Alta coincidencia espacial, el alto contraste ecográfico favorece una segmentación precisa y con bajo nivel de falsos positivos."
-,49,"0,04",
-,50,"0,7",
-,51,"0,36",
-,52,0,Nula segmentación podríamos decir que la intensidad de la lesión es muy similar al tejido circundante lo que impide la discriminación binaria correctamente.
-,53,"0,01","Segmentación casi inexistente observamos que predominio de clasificación errónea y ausencia de delimitación estructural, lo que no nos ofrece la información ideal."
-,54,"0,51",
-,55,"0,11",
-,56,"0,44",
-,57,"0,04",
-,58,"0,1",Desempeño bajo pero con leve detección de la zona central los contornos no se definen correctamente debido a bajo gradiente de intensidad.
-,59,"0,13",
-,60,"0,38",
-[Tabla F1 - Hoja 1.csv](https://github.com/user-attachments/files/25672929/Tabla.F1.-.Hoja.1.csv)
-
+[Tabla F1.xlsx](https://github.com/user-attachments/files/25672979/Tabla.F1.xlsx)
+[Tabla F1.xlsx](https://github.com/user-attachments/files/25672979/Tabla.F1.xlsx)
+[Tabla F1.xlsx](https://github.com/user-attachments/files/25672974/Tabla.F1.xlsx)
+[Tabla F1.xlsx](https://github.com/user-attachments/files/25672974/Tabla.F1.xlsx)
 
