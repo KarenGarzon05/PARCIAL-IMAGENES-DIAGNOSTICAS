@@ -1,14 +1,15 @@
 # PARCIAL-IMAGENES-DIAGNOSTICAS.
 **PRESENTACION**
-INTEGRANTES DE GRUPO: karen sofia garzon paez , antonia garzon vanegas, 
 
-ASIGNATURA: Imagenes diagnosticas 
+INTEGRANTES DE GRUPO: karen sofia garzon paez , antonia garzon vanegas, Maria Angelica Vargas Saldaña
 
-DOCENTE:Sergio Francisco mora martinez
+ASIGNATURA: Imagenes Diagnosticas 
 
-INSTITUCION: universidad militar nueva granada 
+DOCENTE:Sergio Francisco Mora Martinez
 
-PROGRAMA: ingenieria biomedica 
+INSTITUCION: Universidad Militar Nueva Granada 
+
+PROGRAMA: Ingenieria Biomedica-Sexto Semestre
 
 CAJICA-CUNDINAMARCA
 
