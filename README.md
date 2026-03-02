@@ -75,7 +75,13 @@ Este método permite identificar regiones de menor intensidad asociadas a posibl
 d) Evaluación mediante F1 Score
 Para medir el desempeño de la segmentación, se utilizó la métrica F1 Score, que combina precisión y sensibilidad:
 
-
+$$
+F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall}
+$$
+o 
+$$
+F1 = \frac{2TP}{2TP + FP + FN}
+$$
 
 La comparación se realizó entre la máscara real y la máscara segmentada.
 
