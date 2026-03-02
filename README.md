@@ -87,5 +87,105 @@ for i in range(len(image_paths)):
 
 print("Promedio F1:", np.mean(scores))
 print("Desviación estándar:", np.std(scores))
+
 ```
+Ahora para la segmentación se empieza probando un umbral T = 80, realizando un for para procesar las 60 imagenes, se convierte la imagen a escala de grises, y se redimensiona la mascara para que tenga el mismo tamaño que la imagen con `mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))`. Se aplica la segmentación con umbral y se convierten con `flatten` de matrices 2D a vectores 1D para aplicar la función `f1_score`.
+```python
+T=80
+for i in range(len(image_paths)):
+  img = cv2.imread(image_paths[i])
+  mask = cv2.imread(mask_paths[i], 0)
+  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))
+
+
+  binary = np.zeros_like(gray)
+  binary[gray < T] = 1
+  mask = mask // 255
+
+  f1 = f1_score(mask.flatten(), binary.flatten())
+  scores.append(f1)
+
+print("Promedio F1:", np.mean(scores))
+print("Desviación estándar:", np.std(scores))
+```
+Promedio F1: 0.19928292879913367
+Desviación estándar: 0.196648717723429
+
+Para encontrar el mejor procesamiento se prueban distintos valores de T (umbral) hasta encontrar los mejores valores de F1 y desviación estándar.
+Se aplican los umbrales "40, 55 y 60". 
+```python
+T=40
+
+for i in range(len(image_paths)):
+  img = cv2.imread(image_paths[i])
+  mask = cv2.imread(mask_paths[i], 0)
+  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))
+
+
+  binary = np.zeros_like(gray)
+  binary[gray < T] = 1
+  mask = mask // 255
+
+  f1 = f1_score(mask.flatten(), binary.flatten())
+  scores.append(f1)
+
+print("Promedio F1:", np.mean(scores))
+print("Desviación estándar:", np.std(scores))
+```
+Promedio F1: 0.19152608869768337
+Desviación estándar: 0.20514189571609265
+
+El umbral de 55 dió los mejores resultados, por lo cual se escogió como el código final. A este codigo se le complementó la visualización de cada imagen segmentada con `matplotlib` y su F1 Score respectivo.
+```python
+T=55
+
+for i in range(len(image_paths)):
+  img = cv2.imread(image_paths[i])
+  mask = cv2.imread(mask_paths[i], 0)
+  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))
+
+
+  binary = np.zeros_like(gray)
+  binary[gray < T] = 1
+  mask = mask // 255
+
+  f1 = f1_score(mask.flatten(), binary.flatten())
+  scores.append(f1)
+
+  plt.imshow(binary, cmap='gray')
+  plt.title(f'Imagen segmentada {i+1} - F1: {f1:.2f}')
+  plt.axis('off')
+  plt.show()
+
+print("Promedio F1:", np.mean(scores))
+print("Desviación estándar:", np.std(scores))
+```
+Promedio F1: 0.19959456226063915
+Desviación estándar: 0.19649696088820517
+
+```python
+T=60
+
+for i in range(len(image_paths)):
+  img = cv2.imread(image_paths[i])
+  mask = cv2.imread(mask_paths[i], 0)
+  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))
+
+
+  binary = np.zeros_like(gray)
+  binary[gray < T] = 1
+  mask = mask // 255
+
+  f1 = f1_score(mask.flatten(), binary.flatten())
+  scores.append(f1)
+
+print("Promedio F1:", np.mean(scores))
+print("Desviación estándar:", np.std(scores))
+```
+Promedio F1: 0.1886185514736362
+Desviación estándar: 0.2016104178524424
 
