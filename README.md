@@ -40,7 +40,7 @@ style P fill:#FFD6A5,stroke:#000
 style Q fill:#BDB2FF,stroke:#000
 style R fill:#A2D2FF,stroke:#000,stroke-width:2px
 ```
-
+# EXPLICACION DE LINEAS DE CODIGO
 
 Para empezar se importaron las librerias y funciones necesarias
 ```python
@@ -210,4 +210,36 @@ Media intensidad tumor: 53.95745975739419
 Desviación: 42.95237497623277
 
 Analizando estos valores se puede concluir que el umbral optimo para segmentar el tumor debe ser de alrededor 53.95, sin embargo, la desviación estándar es demasiado alta, lo cual significa que están muy dispersos los datos. Hay tumores con intensidades muy altas, y otros con muy bajas. Por eso aunque se aplique el umbral optimo, los resultados no serán ideales pues los datos estas muy dispersos con respecto a la media.
+
+```python
+import cv2
+import numpy as np
+
+T = 55  # mismo umbral que usas
+
+# Persona ingresa la ruta
+ruta = input("Ingrese la ruta de la imagen: ")
+
+img = cv2.imread(ruta)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Segmentación
+binary = np.zeros_like(gray)
+binary[gray < T] = 1
+
+# Calcular área de la lesión
+area = np.sum(binary)
+area_total = binary.shape[0] * binary.shape[1]
+porcentaje = area / area_total
+
+# Regla simple de decisión
+if porcentaje > 0.25:
+    print("La imagen es: MALIGNA")
+else:
+    print("La imagen es: BENIGNA")
+```
+Este código realiza una clasificación simple de imágenes médicas basada en segmentación por umbral. Primero, se importan las `librerías cv2` y `numpy`, necesarias para procesar la imagen y realizar operaciones matriciales. Luego se define el umbral `T = 55`, que permitirá separar la posible lesión del resto de la imagen.
+El programa solicita al usuario la ruta de la imagen `(input)` y la carga con `cv2.imread`. Posteriormente, la imagen se convierte a escala de grises usando `cv2.cvtColor`, lo que facilita el análisis de intensidades.
+Después, se crea una imagen binaria donde los píxeles con intensidad menor que el umbral `(gray < T)` se consideran parte de la lesión. Con esta segmentación, se calcula el área tumoral sumando los píxeles blancos `(np.sum(binary))` y se obtiene el porcentaje respecto al área total de la imagen.
+Finalmente, se aplica una regla de decisión: si el porcentaje de área tumoral es mayor al 25%, la imagen se clasifica como maligna; en caso contrario, se clasifica como benigna.
 
