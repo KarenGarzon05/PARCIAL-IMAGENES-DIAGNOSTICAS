@@ -50,3 +50,24 @@ print("Máscaras:", len(mask_paths))
 scores = []
 
 ```
+Ahora para la segmentación se empieza probando un umbral T = 80, realizando un for para procesar las 60 imagenes, se convierte la imagen a escala de grises, y se redimensiona la mascara para que tenga el mismo tamaño que la imagen con `  mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))`. Se aplica la segmentación con umbral y se convierten con `flatten` de matrices 2D a vectores 1D para aplicar la función `f1_score`.
+```python
+T=80
+for i in range(len(image_paths)):
+  img = cv2.imread(image_paths[i])
+  mask = cv2.imread(mask_paths[i], 0)
+  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+  mask = cv2.resize(mask, (gray.shape[1], gray.shape[0]))
+
+
+  binary = np.zeros_like(gray)
+  binary[gray < T] = 1
+  mask = mask // 255
+
+  f1 = f1_score(mask.flatten(), binary.flatten())
+  scores.append(f1)
+
+print("Promedio F1:", np.mean(scores))
+print("Desviación estándar:", np.std(scores))
+```
+
