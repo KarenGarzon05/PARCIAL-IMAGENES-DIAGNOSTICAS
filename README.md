@@ -53,6 +53,47 @@ Adicionalmente, se calculó la intensidad promedio de los píxeles correspondien
 
 Finalmente, se implementó una regla de decisión simple basada en el porcentaje de área tumoral segmentada. Si el área supera el 25% del total de la imagen, se clasifica como maligna; en caso contrario, como benigna.
 
+**Explicación detallada del enfoque y métodos implementados**
+El enfoque utilizado se basa en técnicas clásicas de procesamiento digital de imágenes:
+a) Carga y organización de datos
+Se descomprimieron los conjuntos de imágenes (Malignos y Benignos) y se organizaron automáticamente utilizando la función glob, separando imágenes originales y sus respectivas máscaras.
+
+b) Preprocesamiento
+Cada imagen fue convertida a escala de grises mediante cv2.cvtColor. Esto simplifica el análisis al trabajar únicamente con intensidades en lugar de tres canales de color.
+c) Segmentación por umbral
+Se aplicó una segmentación binaria basada en un umbral fijo:
+
+$$
+binary =
+\begin{cases}
+1 & \text{si } gray < T \\
+0 & \text{en otro caso}
+\end{cases}
+$$
+
+Este método permite identificar regiones de menor intensidad asociadas a posibles lesiones.
+d) Evaluación mediante F1 Score
+Para medir el desempeño de la segmentación, se utilizó la métrica F1 Score, que combina precisión y sensibilidad:
+
+
+
+La comparación se realizó entre la máscara real y la máscara segmentada.
+
+e) Análisis estadístico
+
+Se calcularon:
+Promedio del F1 Score
+Desviación estándar
+Intensidad promedio del tumor.
+
+Esto permitió evaluar la estabilidad del método.
+
+f) Clasificación simple
+Se implementó una regla basada en el porcentaje de área tumoral:
+
+
+Si el porcentaje es mayor a 0.25 → Maligna
+Si es menor o igual → Benigna
 **EXPLICACION DE LINEAS DE CODIGO**
 
 Para empezar se importaron las librerias y funciones necesarias
