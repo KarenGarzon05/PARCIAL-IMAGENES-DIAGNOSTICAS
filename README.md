@@ -2,48 +2,24 @@
 ```mermaid
 flowchart TD
 
-A([Inicio]) --> B[Descomprimir datasets<br>Malignos.zip y Benignos.zip]
-B --> C[Obtener lista de imágenes y máscaras<br>glob()]
+A([Inicio]) --> B[Descomprimir Malignos.zip y Benignos.zip]
+B --> C[Obtener lista de imagenes y mascaras con glob]
 C --> D[Separar image_paths y mask_paths]
-
 D --> E[Definir umbral T]
-E --> F[Leer imagen y máscara]
+E --> F[Leer imagen y mascara]
 F --> G[Convertir a escala de grises]
-G --> H[Segmentación binaria<br>gray < T]
+G --> H[Segmentacion binaria]
 H --> I[Calcular F1 Score]
-I --> J[Guardar métricas<br>Promedio y Desviación]
-
-J --> K[Calcular intensidad promedio<br>del tumor usando máscara]
-
-K --> L[Ingreso de nueva imagen]
-L --> M[Segmentar con T=55]
-M --> N[Calcular área del tumor]
-N --> O{¿Área > 25%?}
-O -->|Sí| P[Clasificar como MALIGNA]
-O -->|No| Q[Clasificar como BENIGNA]
-
+I --> J[Guardar promedio y desviacion]
+J --> K[Calcular intensidad promedio del tumor]
+K --> L[Ingresar nueva imagen]
+L --> M[Segmentar con T igual 55]
+M --> N[Calcular area del tumor]
+N --> O{Area mayor a 0.25?}
+O -->|Si| P[Clasificar MALIGNA]
+O -->|No| Q[Clasificar BENIGNA]
 P --> R([Fin])
 Q --> R
-
-%% Colores
-style A fill:#A2D2FF,stroke:#000,stroke-width:2px
-style B fill:#BDE0FE,stroke:#000
-style C fill:#CDB4DB,stroke:#000
-style D fill:#FFC8DD,stroke:#000
-style E fill:#FFAFCC,stroke:#000
-style F fill:#FFFFC7,stroke:#000
-style G fill:#B9FBC0,stroke:#000
-style H fill:#FFD6A5,stroke:#000
-style I fill:#E7C6FF,stroke:#000
-style J fill:#A0C4FF,stroke:#000
-style K fill:#CAFFBF,stroke:#000
-style L fill:#FFC6FF,stroke:#000
-style M fill:#FDFFB6,stroke:#000
-style N fill:#9BF6FF,stroke:#000
-style O fill:#FFADAD,stroke:#000
-style P fill:#FF6B6B,stroke:#000
-style Q fill:#4CC9F0,stroke:#000
-style R fill:#A2D2FF,stroke:#000,stroke-width:2px
 ```
 
 
