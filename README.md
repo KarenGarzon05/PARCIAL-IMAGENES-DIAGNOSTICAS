@@ -309,8 +309,7 @@ Finalmente, se aplica una regla de decisión: si el porcentaje de área tumoral 
 
 **TABLA DE F1-SCORES DE LA SEGMENTACION**
 
-[Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
-[Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
+https://docs.google.com/spreadsheets/d/1WPv_QXbmG8LMjkskQI7WBDyVf6zWb_NQR1PK_lmB12s/edit?usp=sharing
 
 **Conclusiones**
 
