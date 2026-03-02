@@ -242,8 +242,7 @@ Este código realiza una clasificación simple de imágenes médicas basada en s
 El programa solicita al usuario la ruta de la imagen `(input)` y la carga con `cv2.imread`. Posteriormente, la imagen se convierte a escala de grises usando `cv2.cvtColor`, lo que facilita el análisis de intensidades.
 Después, se crea una imagen binaria donde los píxeles con intensidad menor que el umbral `(gray < T)` se consideran parte de la lesión. Con esta segmentación, se calcula el área tumoral sumando los píxeles blancos `(np.sum(binary))` y se obtiene el porcentaje respecto al área total de la imagen.
 Finalmente, se aplica una regla de decisión: si el porcentaje de área tumoral es mayor al 25%, la imagen se clasifica como maligna; en caso contrario, se clasifica como benigna.
-[Tabla F1.xlsx](https://github.com/user-attachments/files/25672979/Tabla.F1.xlsx)
-[Tabla F1.xlsx](https://github.com/user-attachments/files/25672979/Tabla.F1.xlsx)
-[Tabla F1.xlsx](https://github.com/user-attachments/files/25672974/Tabla.F1.xlsx)
-[Tabla F1.xlsx](https://github.com/user-attachments/files/25672974/Tabla.F1.xlsx)
 
+
+[Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
+[Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
