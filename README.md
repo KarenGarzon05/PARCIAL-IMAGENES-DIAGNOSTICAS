@@ -42,6 +42,7 @@ style Q fill:#BDB2FF,stroke:#000
 style R fill:#A2D2FF,stroke:#000,stroke-width:2px
 ```
 **DESCRIPCION DE LOS RESULTADOS OBTENIDOS** 
+
 En este proyecto se implementó un algoritmo de segmentación por umbral para la detección de lesiones tumorales en imágenes médicas. Se evaluó el desempeño del método utilizando la métrica F1 Score, comparando las segmentaciones obtenidas con las máscaras reales (ground truth).
 
 Se probaron distintos valores de umbral (T = 40, 55, 60 y 80) con el fin de analizar cómo afecta la segmentación al desempeño del modelo. Se calcularon el promedio y la desviación estándar del F1 Score para cada caso, permitiendo identificar el umbral que ofrece mejor equilibrio entre precisión y sensibilidad.
@@ -51,6 +52,7 @@ Los resultados muestran que el desempeño del modelo depende directamente del va
 Adicionalmente, se calculó la intensidad promedio de los píxeles correspondientes a la región tumoral, lo que permitió analizar características estadísticas del tumor.
 
 Finalmente, se implementó una regla de decisión simple basada en el porcentaje de área tumoral segmentada. Si el área supera el 25% del total de la imagen, se clasifica como maligna; en caso contrario, como benigna.
+
 **EXPLICACION DE LINEAS DE CODIGO**
 
 Para empezar se importaron las librerias y funciones necesarias
@@ -255,5 +257,6 @@ Después, se crea una imagen binaria donde los píxeles con intensidad menor que
 Finalmente, se aplica una regla de decisión: si el porcentaje de área tumoral es mayor al 25%, la imagen se clasifica como maligna; en caso contrario, se clasifica como benigna.
 
 **TABLA DE F1-SCORES DE LA SEGMENTACION**
+
 [Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
 [Tabla.F1.-.Hoja.1.csv](https://github.com/user-attachments/files/25672992/Tabla.F1.-.Hoja.1.csv)
