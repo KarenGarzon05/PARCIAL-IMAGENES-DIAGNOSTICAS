@@ -56,11 +56,11 @@ Finalmente, se implementó una regla de decisión simple basada en el porcentaje
 **Explicación detallada del enfoque y métodos implementados**
 El enfoque utilizado se basa en técnicas clásicas de procesamiento digital de imágenes:
 
-a) Carga y organización de datos: Se descomprimieron los conjuntos de imágenes (Malignos y Benignos) y se organizaron automáticamente utilizando la función glob, separando imágenes originales y sus respectivas máscaras.
+**a) Carga y organización de datos:** Se descomprimieron los conjuntos de imágenes (Malignos y Benignos) y se organizaron automáticamente utilizando la función glob, separando imágenes originales y sus respectivas máscaras.
 
-b) Preprocesamiento: Cada imagen fue convertida a escala de grises mediante cv2.cvtColor. Esto simplifica el análisis al trabajar únicamente con intensidades en lugar de tres canales de color.
+**b) Preprocesamiento:** Cada imagen fue convertida a escala de grises mediante cv2.cvtColor. Esto simplifica el análisis al trabajar únicamente con intensidades en lugar de tres canales de color.
 
-c) Segmentación por umbral:Se aplicó una segmentación binaria basada en un umbral fijo:
+**c) Segmentación por umbral:** Se aplicó una segmentación binaria basada en un umbral fijo:
 
 $$
 binary =
@@ -71,7 +71,7 @@ binary =
 $$
 
 Este método permite identificar regiones de menor intensidad asociadas a posibles lesiones.
-d) Evaluación mediante F1 Score: Para medir el desempeño de la segmentación, se utilizó la métrica F1 Score, que combina precisión y sensibilidad:
+**d) Evaluación mediante F1 Score:** Para medir el desempeño de la segmentación, se utilizó la métrica F1 Score, que combina precisión y sensibilidad:
 
 $$
 F1 = \frac{2 \cdot Precision \cdot Recall}{Precision + Recall}
@@ -83,7 +83,7 @@ $$
 
 La comparación se realizó entre la máscara real y la máscara segmentada.
 
-e) Análisis estadístico
+**e) Análisis estadístico**
 Se calcularon:
 *Promedio del F1 Score
 
@@ -93,7 +93,7 @@ Se calcularon:
 
 Esto permitió evaluar la estabilidad del método.
 
-f) Clasificación simple: Se implementó una regla basada en el porcentaje de área tumoral:
+**f) Clasificación simple:** Se implementó una regla basada en el porcentaje de área tumoral:
 
 $$
 porcentaje = \frac{area_{tumoral}}{area_{total}}
@@ -102,6 +102,7 @@ $$
 *Si el porcentaje es mayor a 0.25 → Maligna
 
 *Si es menor o igual → Benigna
+
 **EXPLICACION DE LINEAS DE CODIGO**
 
 Para empezar se importaron las librerias y funciones necesarias
