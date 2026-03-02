@@ -1,4 +1,12 @@
 # PARCIAL-IMAGENES-DIAGNOSTICAS.
+**PRESENTACION**
+INTEGRANTES DE GRUPO: karen sofia garzon paez , antonia garzon vanegas, 
+ASIGNATURA: Imagenes diagnosticas 
+DOCENTE:Sergio Francisco mora martinez
+INSTITUCION: universidad militar nueva granada 
+PROGRAMA: ingenieria biomedica 
+CAJICA-CUNDINAMARCA
+
 **DIAGRAMA DE FLUJO** 
 ```mermaid
 flowchart TD
