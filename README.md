@@ -2,14 +2,28 @@
 ```mermaid
 flowchart TD
 
-A([Inicio]) --> B[Importar librerías<br>cv2, numpy, glob, sklearn]
-B --> C[Cargar imágenes<br>cv2.imread + glob]
-C --> D[Preprocesamiento<br>Escala de grises<br>Filtrado / Umbral]
-D --> E[Segmentación<br>Separar células del fondo]
-E --> F[Detección / Conteo<br>Extraer contornos]
-F --> G[Calcular F1 Score<br>Comparar con Ground Truth]
-G --> H[Mostrar resultados<br>Imágenes + Métricas]
-H --> I([Fin])
+A([Inicio]) --> B[Descomprimir datasets<br>Malignos.zip y Benignos.zip]
+B --> C[Obtener lista de imágenes y máscaras<br>glob()]
+C --> D[Separar image_paths y mask_paths]
+
+D --> E[Definir umbral T]
+E --> F[Leer imagen y máscara]
+F --> G[Convertir a escala de grises]
+G --> H[Segmentación binaria<br>gray < T]
+H --> I[Calcular F1 Score]
+I --> J[Guardar métricas<br>Promedio y Desviación]
+
+J --> K[Calcular intensidad promedio<br>del tumor usando máscara]
+
+K --> L[Ingreso de nueva imagen]
+L --> M[Segmentar con T=55]
+M --> N[Calcular área del tumor]
+N --> O{¿Área > 25%?}
+O -->|Sí| P[Clasificar como MALIGNA]
+O -->|No| Q[Clasificar como BENIGNA]
+
+P --> R([Fin])
+Q --> R
 
 %% Colores
 style A fill:#A2D2FF,stroke:#000,stroke-width:2px
@@ -20,7 +34,16 @@ style E fill:#FFAFCC,stroke:#000
 style F fill:#FFFFC7,stroke:#000
 style G fill:#B9FBC0,stroke:#000
 style H fill:#FFD6A5,stroke:#000
-style I fill:#A2D2FF,stroke:#000,stroke-width:2px
+style I fill:#E7C6FF,stroke:#000
+style J fill:#A0C4FF,stroke:#000
+style K fill:#CAFFBF,stroke:#000
+style L fill:#FFC6FF,stroke:#000
+style M fill:#FDFFB6,stroke:#000
+style N fill:#9BF6FF,stroke:#000
+style O fill:#FFADAD,stroke:#000
+style P fill:#FF6B6B,stroke:#000
+style Q fill:#4CC9F0,stroke:#000
+style R fill:#A2D2FF,stroke:#000,stroke-width:2px
 ```
 
 
