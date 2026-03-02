@@ -53,7 +53,8 @@ Adicionalmente, se calculó la intensidad promedio de los píxeles correspondien
 
 Finalmente, se implementó una regla de decisión simple basada en el porcentaje de área tumoral segmentada. Si el área supera el 25% del total de la imagen, se clasifica como maligna; en caso contrario, como benigna.
 
-**Explicación detallada del enfoque y métodos implementados**
+**EXPLICACION DETALLADA DEL ENFOQUE Y METODOS IMPLEMNETADOS**
+
 El enfoque utilizado se basa en técnicas clásicas de procesamiento digital de imágenes:
 
 **a) Carga y organización de datos:** Se descomprimieron los conjuntos de imágenes (Malignos y Benignos) y se organizaron automáticamente utilizando la función glob, separando imágenes originales y sus respectivas máscaras.
